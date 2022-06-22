@@ -1,0 +1,9 @@
+<div class="card border border-info p-2 w-50 mx-auto">
+    <img class="w-50 d-block mx-auto py-3" [src]="card[0].image" alt="image">
+    <div class="card-body">
+        <p class="text-info my-3 fw-bold">{{card[0].title}}</p>
+        <p class="text-primary my-3 fw-bold">{{card[0].category}}</p>
+        <p class="text-danger my-3 fw-bold">{{card[0].price | currency }}</p>
+        <button class="btn btn-outline-danger text-dark text-center w-50 d-block py-3 mx-auto fw-bold">Add to Cart</button>
+    </div>
+</div>

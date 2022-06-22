@@ -1,0 +1,28 @@
+<form class="border border-light rounded pb-3 w-75 mx-auto" #login="ngForm" (ngSubmit)="sendInfo(login)">
+
+    <fieldset class="my-3 px-3">
+        <label for="Email" class="w-100 my-1 fw-bold">Email Address</label>
+        <input type="Email" id="Email" name="Email" class="w-100 form-control"  #Email="ngModel" ngModel required email>
+        <div *ngIf="Email.touched && Email.invalid">
+            <p *ngIf="Email.errors?.['required']" class="text-danger">Email is a required field!</p>
+            <p *ngIf="Email.errors?.['email']" class="text-danger">This is not a valid Email!!!</p>
+        </div>
+    </fieldset>
+
+    <fieldset class="my-3 px-3">
+        <label for="password" class="w-100 my-1 fw-bold">password</label>
+        <input type="password" id="password" name="password" class="w-100 form-control" #password="ngModel" ngModel required>
+        <div *ngIf="password.touched && password.invalid">
+            <p *ngIf="password.errors?.['required']" class="text-danger">Password is a required field!</p>
+        </div>
+    </fieldset>
+
+    <fieldset class="my-4 px-3">
+        <button type="submit" value="Login" class="w-100 form-control btn btn-primary fw-bold fs-5" [disabled]="!login.valid">Login</button>
+    </fieldset>
+
+    <fieldset class="my-2">
+        <h4 class="text-center">Don't have account? <a routerLink="/auth/register" class="text-decoration-underline text-secondary">Register</a></h4>
+    </fieldset>
+
+</form>
