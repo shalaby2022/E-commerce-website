@@ -18,11 +18,16 @@
     </fieldset>
 
     <fieldset class="my-4 px-3">
-        <button type="submit" value="Login" class="w-100 form-control btn btn-primary fw-bold fs-5" [disabled]="!login.valid">Login</button>
+        <button type="submit" value="Login" class="w-100 form-control btn btn-primary fw-bold fs-5" >Login</button>
     </fieldset>
+
+    <div>
+        <p class="bg-alert  px-3 text-danger">{{err}}</p>
+    </div>
 
     <fieldset class="my-2">
         <h4 class="text-center">Don't have account? <a routerLink="/auth/register" class="text-decoration-underline text-secondary">Register</a></h4>
     </fieldset>
 
+    
 </form>

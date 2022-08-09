@@ -1,14 +1,15 @@
 export interface Rating {
-    rate:number,
-    count:number
+    rate?:number,
+    count?:number
 }
 
 export interface Product {
-    id:Number,
+    id:number,
     title:string,
-    price:number,
+    price:number ,
     description:string,
     category:string,
     image:string,
-    rating:Rating
+    rating:Rating,
+    // quantity?:number
 }

@@ -1,12 +1,15 @@
-<a [routerLink]="['/details',product.id]" class="text-decoration-none">
-    <div class="card border border-info p-2">
-        <img class="w-75 image-fluid d-block mx-auto py-3" [src]="product.image" alt="image">
-        <div class="card-body">
-            <p class="text-info my-3 fw-bold">{{product.title}}</p>
-            <p class="text-primary my-3 fw-bold">{{product.category}}</p>
-            <p class="text-danger my-3 fw-bold">{{product.price | currency }}</p>
-            <button class="btn btn-outline-danger text-dark text-center w-50 d-block py-3 mx-auto fw-bold">Add to Cart</button>
+<div  class="card border boxshadow itsHeigh">
+    <a [routerLink]="['/details',product.id]" class="text-decoration-none">
+        <div>
+            <img class="w-100 image-fluid d-block mx-auto" [src]="product.images" alt="image">
+            <div class="card-body">
+                <p class="text-info  fw-bold">{{product.title}}</p>
+                <p class="text-primary  fw-bold">{{product.category.name}}</p>
+                <p class="text-danger fw-bold">{{product.price | currency }}</p>
+            </div>
         </div>
-    </div>
-</a>
+    </a>
+    <a class="m-2 fs-3 text-decoration-none" #ref (click)="addToWish(ref,product.images,product.title,product.id)"><i class="fa-solid fa-star"></i></a>
+    <button class="btn btn-danger text-dark text-center p-2 mb-2 w-100 fw-bold" (click)="addcart(product)">Add to Cart</button>
+</div>
 

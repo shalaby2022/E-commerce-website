@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProductService } from 'src/app/product.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,12 +10,22 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   
-  constructor() { }
+  err: string =''
+  constructor(private _productService:ProductService, private _router:Router) { }
 
   ngOnInit(): void {
   }
 
   sendInfo(data:any) {
-    console.log(data.value)
+    if(data.valid)
+    {
+      console.log(data);
+      localStorage.setItem('Email',JSON.stringify(data.controls.Email.value))
+      this._router.navigate([''])
+    }
+    else{
+      // this._router.navigate(['/auth/register'])
+      this.err ='Please Enter Your Email and Passowrd'
+    }
   }
 }

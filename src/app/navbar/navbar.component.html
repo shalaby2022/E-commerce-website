@@ -1,16 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 mb-5">
-    <div class="container ">
-        <a class="navbar-brand fw-bolder" routerLinkActive="active"  routerLink="/products">Products</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary py-3 mb-5">
+    <div class="container d-flex align-content-center">
+        <a class="navbar-brand fw-bolder d-inline-block" routerLinkActive="active"  routerLink="/products">Products</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse " id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-dark fw-bolder" routerLinkActive="active"  routerLink="auth/register">Register</a>
+                <li class="nav-item ">
+                    <a class="nav-link text-dark fw-bolder d-inline-block position-relative " routerLinkActive="active" routerLink="/cart"><span class="text-dark fs-4 position-relative mx-2" ><i class="fa-solid fa-cart-shopping"></i></span><span class="d-inline-block position-absolute position2 text-danger p-1 mx-1 fw-bold fs-5">{{navCounter}}</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark fw-bolder" routerLinkActive="active" routerLink="auth/login">Login</a>
+                    <a class="nav-link text-dark fw-bolder d-inline-block" routerLinkActive="active"  routerLink="auth/register">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark fw-bolder d-inline-block" routerLinkActive="active" routerLink="auth/login">Login</a>
                 </li>
             </ul>
         </div>

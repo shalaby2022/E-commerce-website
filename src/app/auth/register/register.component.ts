@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   registertaion:FormGroup = this.fb.group({
     Name:[null,[Validators.required]],
-    Email:[null,[Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$/),Validators.required]],
+    Email:[null,[Validators.required,Validators.pattern(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)]],
     UserName:[null,[Validators.required,Validators.pattern(/^[^\s]+$/)]],
     password:[null,[Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)]],
     confirmpassword:[null,[Validators.required]],
@@ -30,11 +30,12 @@ export class RegisterComponent implements OnInit {
   }
 
   get getControl() {
+    // console.log(this.registertaion.controls);
     return this.registertaion.controls
   }
 
   sendData() {
-    console.log(this.registertaion)
+    // console.log(this.registertaion)
   }
 
   get Address() : FormArray {
@@ -48,6 +49,7 @@ export class RegisterComponent implements OnInit {
       Country: [null,[Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]],
       City: [null,[Validators.required,Validators.pattern(/^[a-zA-Z]+$/)]]
     })
+    
   }
 
   addAddress() {
@@ -59,6 +61,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.registertaion.value);
+    
   }
 }

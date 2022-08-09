@@ -17,7 +17,7 @@
         <input type="Email" name="Email" id="Email" class="w-100 form-control" formControlName="Email">
         <div *ngIf="getControl['Email'].invalid && getControl['Email'].touched">
             <p *ngIf="getControl['Email'].errors?.['required']" class="text-danger">This Field is Required</p>
-            <p *ngIf="getControl['Email'].errors?.['email']" class="text-danger">This Field is Email</p>
+            <p *ngIf="getControl['Email'].errors?.['pattern']" class="text-danger">This Field is Email</p>
         </div>
     </fieldset>
 
@@ -41,12 +41,14 @@
 
     <fieldset class="my-2 px-3">
         <label for="confirmpassword" class="w-100 my-1">confirm Password</label>
-        <input type="password" name="confirmpassword" id="confirmpassword" class="w-100 form-control" formControlName="confirmpassword">
+        <input type="password" name="confirmpassword" id="confirmpassword" class="w-100 form-control"
+            formControlName="confirmpassword">
         <div *ngIf="getControl['confirmpassword'].invalid && getControl['confirmpassword'].touched">
             <p *ngIf="getControl['confirmpassword'].errors?.['required']" class="text-danger">This Field is Required</p>
             <!-------------------------------------------- Using Validators ---------------------------------------------->
-            <p *ngIf="getControl['confirmpassword'].errors?.['confirmedValidator']" class="text-danger">Password Not Matched</p>
-            
+            <p *ngIf="getControl['confirmpassword'].errors?.['confirmedValidator']" class="text-danger">Password Not
+                Matched</p>
+
             <!-------------------------------------------- Using HTMl -------------------------------------------->
             <!-- <div *ngIf="getControl['password'].value != getControl['confirmpassword'].value">
                 <p *ngIf="getControl['confirmpassword'].errors?.['confirmedValidator']" class="text-danger">Password and Confirm Password must be match</p>
@@ -55,14 +57,16 @@
     </fieldset>
 
     <fieldset class="my-4 px-3 d-flex justify-content-between">
-        <button type="submit" class="border border-none rounded text-white py-2 px-4 btn btn-success" [disabled]="registertaion.invalid">Register</button>
-        <button type="submit" class="border border-none rounded text-white py-2 px-4  btn btn-info" (click)="addAddress()">Add Address</button>
+        <button type="submit" class="border border-none rounded text-white py-2 px-4 btn btn-success"
+            [disabled]="!registertaion.valid">Register</button>
+        <button type="submit" class="border border-none rounded text-white py-2 px-4  btn btn-info"
+            (click)="addAddress()">Add Address</button>
     </fieldset>
 
     <fieldset formArrayName="Address" class="my-2 px-3">
         <div *ngFor="let Add of Address.controls; let i=index ; let isLast=last">
             <div [formGroupName]="i" class="row">
-                
+
                 <fieldset class="bg-light my-3">
                     <legend class="px-3 py-3">Address{{i+1}}</legend>
                 </fieldset>
@@ -70,17 +74,21 @@
                 <div class="row">
                     <fieldset class="col-6">
                         <label for="Place" class="w-100 my-1">Place</label>
-                        <input type="text" formControlName="place" name="place" id="Place" placeholder="Th.street 154.st" class="w-100 py-1 form-control">
+                        <input type="text" formControlName="place" name="place" id="Place"
+                            placeholder="Th.street 154.st" class="w-100 py-1 form-control">
                         <div *ngIf="!Add.get('place')?.valid && Add.get('place')?.touched">
-                            <p *ngIf="Add.get('place')?.errors?.['required']" class="text-danger">This Field is Required</p>
+                            <p *ngIf="Add.get('place')?.errors?.['required']" class="text-danger">This Field is Required
+                            </p>
                         </div>
                     </fieldset>
-    
+
                     <fieldset class="col-6">
                         <label for="Street" class="w-100 my-1">Street</label>
-                        <input type="text" formControlName="Street" name="Street" id="Street" placeholder="South street" class="w-100 py-1 form-control">
+                        <input type="text" formControlName="Street" name="Street" id="Street" placeholder="South street"
+                            class="w-100 py-1 form-control">
                         <div *ngIf="!Add.get('Street')?.valid && Add.get('Street')?.touched">
-                            <p *ngIf="Add.get('Street')?.errors?.['required']" class="text-danger">This Field is Required</p>
+                            <p *ngIf="Add.get('Street')?.errors?.['required']" class="text-danger">This Field is
+                                Required</p>
                         </div>
                     </fieldset>
                 </div>
@@ -88,28 +96,34 @@
                 <div class="row">
                     <fieldset class="col-6">
                         <label for="Country" class="w-100 my-1">Country</label>
-                        <input type="text" formControlName="Country" name="Country" id="Country" placeholder="EX:California" class="w-100 py-1 form-control">
+                        <input type="text" formControlName="Country" name="Country" id="Country"
+                            placeholder="EX:California" class="w-100 py-1 form-control">
                         <div *ngIf="!Add.get('Country')?.valid && Add.get('Country')?.touched">
-                            <p *ngIf="Add.get('Country')?.errors?.['required']" class="text-danger">This Field is Required</p>
+                            <p *ngIf="Add.get('Country')?.errors?.['required']" class="text-danger">This Field is
+                                Required</p>
                         </div>
                     </fieldset>
-    
+
                     <fieldset class="col-6">
                         <label for="City" class="w-100 my-1">City</label>
-                        <input type="text" formControlName="City" name="City" id="City" placeholder="USA" class="w-100 py-1 form-control">
+                        <input type="text" formControlName="City" name="City" id="City" placeholder="USA"
+                            class="w-100 py-1 form-control">
                         <div *ngIf="!Add.get('City')?.valid && Add.get('City')?.touched">
-                            <p *ngIf="Add.get('City')?.errors?.['required']" class="text-danger">This Field is Required</p>
+                            <p *ngIf="Add.get('City')?.errors?.['required']" class="text-danger">This Field is Required
+                            </p>
                         </div>
                     </fieldset>
                 </div>
 
-                <button (click)="removeAddress(i)" class="btn btn-danger d-block ms-auto w-25 my-2" *ngIf="isLast">Remove</button>
+                <button (click)="removeAddress(i)" class="btn btn-danger d-block ms-auto w-25 my-2"
+                    *ngIf="isLast">Remove</button>
             </div>
         </div>
 
     </fieldset>
-    
+
     <fieldset class="my-2">
-        <h4 class="text-center">Already have account! <a routerLink="/auth/login" class="text-decoration-underline text-secondary">login</a></h4>
+        <h4 class="text-center">Already have account! <a routerLink="/auth/login"
+                class="text-decoration-underline text-secondary">login</a></h4>
     </fieldset>
 </form>
