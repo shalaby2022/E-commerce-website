@@ -1,0 +1,44 @@
+<div *ngIf="counter !=0 ,else mytable">
+    <table class="table table-active">
+        <thead class="text-center">
+            <tr>
+            <th scope="col" class="text-white">Image</th>
+            <th scope="col" class="text-white">Name</th>
+            <th scope="col" class="text-white">Price</th>
+            <th scope="col" class="text-white">Quantity</th>
+            <!-- <th scope="col" class="text-white"></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartItems" class="text-center text-bolder fw-bolder my-3">
+            <td><img class="w-100 image-fluid d-block mx-auto py-3" [src]="item.image" alt="image"></td>
+            <td class="pt-4 lineHeight text-white">{{item.title}}</td>
+            <td class="pt-4 lineHeight text-white">{{item.price | currency}}</td>
+            <td class="pt-4 lineHeight text-white"><button (click)="addAmmount(item)" class="btn btn-success mx-2">+</button><span>{{item.quantity}}</span><button (click)="subAmmount(item)" class="btn btn-info mx-2 text-white px-3">-</button></td>
+            <td class="pt-4 lineHeight text-white"><button class="btn btn-danger text-white" (click)="deleteItem(item)">Remove</button></td>
+            </tr>
+            <tr>
+                <td colspan="5"><p class="fw-bold text-secondary fs-3 text-center text-white">Total price =  {{price | currency}}</p></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #mytable>
+    <table class="table text-white">
+        <thead>
+            <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <td colspan="5"><p class="fw-bold fs-3 text-center">Card is Empty</p></td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
