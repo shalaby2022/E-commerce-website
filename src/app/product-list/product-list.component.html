@@ -1,5 +1,27 @@
+<div class="d-flex justify-content-center" *ngIf="_loader.isLoading | async">
+  <div class="spinner-border text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
 <div class="container">
-    <div class="row d-flex justify-content-between">
-        <app-card  class="col-md-5 my-2" *ngFor="let product of products" [product]="product"></app-card>
+    <div class="row">
+      <div class="row col-md-9">
+        <app-card  class="col-md-4 my-2" *ngFor="let product of products" [product]="product"></app-card>
+      </div>
+      <div class="col-md-3 m-2 bg-secondary d-block border rounded">
+          <div class="row d-flex justify-content-between">
+            <div class="col-md-4">
+              <h4>WishList</h4>
+            </div>
+            <div class="col-md-6">
+              <p class="fw-bold text-dark"><span class="text-info">{{wishItems.length}}</span> products</p>
+            </div>
+          </div>
+          <div class="row mt-2 bg-success p-2" *ngFor="let item of wishItems;let i = index">
+            <div class="w-50 "><img [src]="item.image" alt=""></div>
+            <h3>{{item.title}}</h3>
+            <button class="btn btn-danger w-75 d-blcok mx-auto" (click)="removeFromWish(i)">Remove</button>
+          </div>
+      </div>
     </div>
 </div>
